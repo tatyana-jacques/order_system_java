@@ -12,9 +12,10 @@ public class OrderItem {
 	
 	public OrderItem() {}
 
-	public OrderItem(Integer quantity, Product product) {
+	public OrderItem(Integer quantity, Product product, Double price) {
 		this.quantity = quantity;
 		this.product = product;
+		this.price = price;
 	}
 
 	public Integer getQuantity() {
@@ -29,7 +30,9 @@ public class OrderItem {
 		return price;
 	}
 	
-	
+	public void setPrice(Double price) {
+		this.price = price;
+	}
 	public Product getProduct() {
 		return product;
 	}
@@ -39,14 +42,17 @@ public class OrderItem {
 	}
 
 	public double subTotal() {
-		price = product.getPrice() * quantity;		
-		return price;
+		double subTotal= price * quantity;		
+		return subTotal;
 			
 	}
 
 	@Override
 	public String toString() {
-		return "OrderItem [quantity=" + quantity + ", Product price=" + product.getPrice() + ", Sub-total=" + subTotal() + "]";
+		return product.getName() 
+				+ ", $" + String.format("%.2f", price) 
+				+ ", Quantity: " + quantity 
+				+ ", Subtotal: $" + String.format("%.2f",subTotal());
 	}
 	
 	

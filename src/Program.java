@@ -17,7 +17,6 @@ public class Program {
 		Scanner sc = new Scanner(System.in);
 		
 		DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-		DateTimeFormatter fmt1 = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
 		
 		System.out.println("Enter client data:");
 		System.out.print("Name:");
@@ -49,21 +48,14 @@ public class Program {
 			
 			Product product = new Product(productName, productPrice);
 			
-			OrderItem item = new OrderItem(quantity,product);
+			OrderItem item = new OrderItem(quantity,product, product.getPrice());
 			
 			order.addItem(item);
-							
+			
 		}
-		
-		
+			
 		
 		System.out.println(order);
-		
-		
-		
-		
-		
-		
 		
 		
 		sc.close();

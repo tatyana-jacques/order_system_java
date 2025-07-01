@@ -10,7 +10,6 @@ import entities.enums.OrderStatus;
 public class Order {
 	
 	private static DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
-	private static DateTimeFormatter fmtBirth = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 	
 	private LocalDateTime moment;
 	private OrderStatus status;
@@ -85,13 +84,12 @@ public class Order {
 		sb.append("ORDER SUMMARY: \n");
 		sb.append("Order moment: " +fmt.format(moment) +  "\n");
 		sb.append("Order status: " + status+ "\n");
-		sb.append("Client: " + client.getName()+ " (" + fmtBirth.format(client.getBirth()) + ") - " + client.getEmail() + "\n");	
 		sb.append("Order items: \n");
 		
 		for(OrderItem i : items) {
-			sb.append(i.getProduct().getName() + ", $" + String.format("%.2f",i.getProduct().getPrice())+ ", " 
-						+ i.getQuantity() + ", Subtotal: $"  + String.format("%.2f",i.subTotal()) + "\n");
+			sb.append(i.toString() + "\n");
 		}
+		sb.append(client.toString() + "\n");
 		sb.append("Total price: $" +total() +  "\n");
 		
 		

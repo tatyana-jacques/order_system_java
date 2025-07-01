@@ -27,15 +27,15 @@ public class Program {
 		LocalDate birth  = LocalDate.parse(sc.next(),fmt);
 		Client client = new Client(name,email,birth);
 		sc.nextLine();
+		
 		System.out.println("Enter order data:");
 		System.out.print("Status:");
-		String status = sc.nextLine();
+		OrderStatus status = OrderStatus.valueOf(sc.next());
 		
-		Order order = new Order(OrderStatus.valueOf(status),client);
-		
+		Order order = new Order(status,client);
 		
 		System.out.print("How many items to this order? ");
-		double items = sc.nextDouble();
+		int items = sc.nextInt();
 		for(int i = 0; i<items;i++) {
 			sc.nextLine();
 			System.out.println("Enter #" + (i+1) + " item data:");
@@ -48,13 +48,12 @@ public class Program {
 			
 			Product product = new Product(productName, productPrice);
 			
-			OrderItem item = new OrderItem(quantity,product, product.getPrice());
+			OrderItem item = new OrderItem(quantity,product, productPrice);
 			
 			order.addItem(item);
 			
 		}
-			
-		
+					
 		System.out.println(order);
 		
 		

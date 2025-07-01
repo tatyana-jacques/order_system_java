@@ -16,19 +16,14 @@ public class Order {
 	private Client client;
 	private List<OrderItem> items = new ArrayList<OrderItem>();
 	
-	public Order() {
-		
-	}
-	
+	public Order() {}
 	
 	
 	public Order(OrderStatus status, Client client) {
-		super();
 		moment = LocalDateTime.now();
 		this.status = status;
 		this.client = client;
 	}
-
 
 
 	public LocalDateTime getMoment() {
@@ -54,11 +49,6 @@ public class Order {
 	public void setClient(Client client) {
 		this.client = client;
 	}
-
-	public List<OrderItem> getItems() {
-		return items;
-	}
-	
 	
 	public void addItem(OrderItem item) {
 		items.add(item);
@@ -87,16 +77,14 @@ public class Order {
 		sb.append("Order items: \n");
 		
 		for(OrderItem i : items) {
-			sb.append(i.toString() + "\n");
+			sb.append(i + "\n");
 		}
-		sb.append(client.toString() + "\n");
-		sb.append("Total price: $" +total() +  "\n");
+		sb.append(client + "\n");
+		sb.append("Total price: $" +String.format("%.2f",total()) +  "\n");
 		
 		
 		return sb.toString();
 	}
 
 	
-	
-
 }
